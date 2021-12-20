@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\Login;
 
 /*
@@ -16,6 +17,8 @@ use Illuminate\Auth\Events\Login;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index']);
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class], 'authenticate');
+Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+Route::resource('/user', UserController::class);

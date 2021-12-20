@@ -4,7 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ $judul }}|{{ $versi }}</title>
-
+  <link rel="apple-touch-icon" sizes="57x57" href="/images/icon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/images/icon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/icon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/icon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/icon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/icon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/icon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/icon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/icon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/icon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon/favicon-16x16.png">
+  <link rel="manifest" href="/images/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/images/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -13,6 +29,7 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+
 </head>
 <!--
 `body` tag options:
@@ -33,7 +50,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <h5 class="nav-link">Selamat Datang</h5>
+        <h5 class="nav-link">Selamat Datang, {{ auth()->user()->name }}</h5>
       </li>
     </ul>
 
@@ -41,7 +58,7 @@
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <img src="dist/img/user2-160x160.jpg" width="30" class="img-circle elevation-2" alt="User Image">
+                <img src="/dist/img/user2-160x160.jpg" width="30" class="img-circle elevation-2" alt="User Image">
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <a href="#" class="dropdown-item">
                     <i class="far fa-id-badge"></i> Profil
@@ -130,7 +147,7 @@
                 </li>              
                 </ul>
             </li>
-            <li class="nav-header"></li>
+            <li class="nav-header"></li>            
             <li class="nav-header">Data Master</li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -167,6 +184,7 @@
                 </li>              
                 </ul>
             </li>
+            @can('admin')              
             <li class="nav-header"></li>
             <li class="nav-header">Administrator</li>
             <li class="nav-item">
@@ -179,25 +197,27 @@
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/user" class="nav-link">
                     <i class="fas fa-user-check"></i>
                     <p>List Akun</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/user/create" class="nav-link">
                     <i class="fas fa-user-plus"></i>
                     <p>Registrasi Baru</p>
                     </a>
                 </li>             
                 </ul>
             </li>
+            @endcan
+
             <li class="nav-header"></li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <p>Logout</p>
-                </a>
+              <form action="/logout" method="POST">
+                    @csrf
+                    <button type="submit" class="nav-item btn text-white"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </form>
             </li>
         </ul>
       </nav>

@@ -14,7 +14,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('user.index', [
+            'judul' => 'List Pengguna',
+            'versi' => 'Simontir v1.0.0 Beta Rev 12',
+            'datas' => User::all()
+        ]);
     }
 
     /**
@@ -24,7 +28,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.baru', [
+            'judul' => 'Registrasi Pengguna Baru',
+            'versi' => 'Simontir v1.0.0 Beta Rev 12'
+        ]);
     }
 
     /**
@@ -35,7 +42,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $validatedData = $request->validate([
+            'name' => 'required|min:5|max:255',
+            'username' => 'required|min:5|max:255|unique:users',
+            'password' => [
+                'required',
+                'string',
+                'min:6',             // must be at least 6 characters in length
+                'regex:/[a-z]/',      // must contain at least one lowercase letter
+                'regex:/[A-Z]/',      // must contain at least one uppercase letter
+                'regex:/[0-9]/',      // must contain at least one digit
+                'regex:/[@$!%*#?&]/', // must contain a special character
+            ],
+            'email' => 'required|email:dns|unique:users',
+            'is_admin' => 'required'
+        ]);
+        // dd('Berhasil');
+        $validatedData['password'] = bcrypt($validatedData['password']);
+        User::create($validatedData);
+
+        // $request->session()->flash('berhasil', 'Registrasi Akun Baru Berhasil!');
+        return redirect('/user')->with('berhasil', 'Registrasi Akun Baru Berhasil!');
     }
 
     /**
@@ -46,7 +74,12 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        // dd($user);
+        return view('user.detail', [
+            'judul' => 'Detail User',
+            'versi' => 'Simontir v1.0.0 Beta Rev 12',
+            'data' => $user
+        ]);
     }
 
     /**
@@ -57,7 +90,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.edit', [
+            'judul' => 'Edit User',
+            'versi' => 'Simontir v1.0.0 Beta Rev 12',
+            'data' => $user
+        ]);
     }
 
     /**
@@ -69,7 +106,29 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        // dd($request);
+        $validatedData = $request->validate([
+            'name' => 'required|min:5|max:255',
+            'username' => 'required|min:5|max:255|unique:users',
+            'password' => [
+                'required',
+                'string',
+                'min:6',             // must be at least 6 characters in length
+                'regex:/[a-z]/',      // must contain at least one lowercase letter
+                'regex:/[A-Z]/',      // must contain at least one uppercase letter
+                'regex:/[0-9]/',      // must contain at least one digit
+                'regex:/[@$!%*#?&]/', // must contain a special character
+            ],
+            'email' => 'required|email:dns|unique:users',
+            'is_admin' => 'required'
+        ]);
+        // dd('Berhasil');
+        $validatedData['password'] = bcrypt($validatedData['password']);
+        User::find($user->id)
+            ->update($validatedData);
+
+        // $request->session()->flash('berhasil', 'Registrasi Akun Baru Berhasil!');
+        return redirect('/user')->with('berhasil', 'Update Akun Baru Berhasil!');
     }
 
     /**

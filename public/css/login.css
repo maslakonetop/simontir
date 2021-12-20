@@ -1,0 +1,25 @@
+body {
+    background-image: linear-gradient(
+        to bottom right,
+        rgb(0, 174, 255),
+        rgb(17, 0, 255)
+    );
+}
+.btn-color {
+    background-color: #0e1c36;
+    color: #fff;
+}
+
+.profile-image-pic {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.cardbody-color {
+    background-color: #ebf2fa;
+}
+
+a {
+    text-decoration: none;
+}
