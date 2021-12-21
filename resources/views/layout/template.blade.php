@@ -98,7 +98,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-header">Menu Utama</li>
+            
             <li class="nav-item menu-open">
                 <a href="/" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -107,11 +107,12 @@
                 </p>
                 </a>
             </li>
+            <li class="nav-header">Menu Utama</li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="fas fa-server"></i>
                 <p>
-                    Entry Data Rekening
+                    Data Kegiatan
                     <i class="fas fa-angle-left right"></i>
                 </p>
                 </a>
