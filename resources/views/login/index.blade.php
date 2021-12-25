@@ -29,8 +29,14 @@
 <body>
     <div class="container">
     <div class="row">
-      <div class="col-md-6 offset-md-3">
+      <div class="col-md-6 offset-md-3">        
           <div class="card border border-rounded my-5 cardbody-color shadow-lg p-3 mb-5 bg-body rounded">
+            @if (session()->has('Login Error'))
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('Login Error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>                     
+            @endif
             <h2 class="text-center text-dark mt-5">{{ $judul }}</h2>
             <h5 class="text-center text-dark">{{ $versi }}</h5>
             <h5 class="text-center text-dark">{{ Date('Y') }}</h5>

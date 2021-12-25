@@ -160,15 +160,21 @@
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/rekening" class="nav-link">
                     <i class="fas fa-university"></i>
                     <p>Master Rekening</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/pptk" class="nav-link">
                     <i class="far fa-id-badge"></i>
                     <p>Master PPTK</p>
+                    </a>
+                </li>              
+                <li class="nav-item">
+                    <a href="/bidang" class="nav-link">
+                    <i class="fas fa-tasks"></i>
+                    <p>Master Bidang</p>
                     </a>
                 </li>              
                 <li class="nav-item">
@@ -252,10 +258,10 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; {{ Date('Y') }} Bappeda Kab. Cilacap</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0
+      <b>Version</b> {{ $versi }}
     </div>
   </footer>
 </div>
@@ -269,7 +275,7 @@
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
 <script src="/dist/js/adminlte.js"></script>
-
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <!-- OPTIONAL SCRIPTS -->
 <script src="/plugins/chart.js/Chart.min.js"></script>
 <!-- AdminLTE for demo purposes -->

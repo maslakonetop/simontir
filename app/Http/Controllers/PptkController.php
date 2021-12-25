@@ -15,7 +15,11 @@ class PptkController extends Controller
      */
     public function index()
     {
-        //
+        return view('pptk.index', [
+            'judul' => 'List Data Pejabat Pelaksana Teknis Kegiatan',
+            'versi' => 'Simontir v1.0.0 Beta Rev 12',
+            'data' => Pptk::paginate(7)
+        ]);
     }
 
     /**

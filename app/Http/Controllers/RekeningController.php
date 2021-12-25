@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bidang;
 use App\Models\Rekening;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RekeningController extends Controller
 {
@@ -14,7 +16,11 @@ class RekeningController extends Controller
      */
     public function index()
     {
-        //
+        return view('rekening.index', [
+            'judul' => 'List Data Rekening',
+            'versi' => 'Simontir v1.0.0 Beta Rev 12',
+            'data' => Rekening::paginate(7)
+        ]);
     }
 
     /**
@@ -24,7 +30,12 @@ class RekeningController extends Controller
      */
     public function create()
     {
-        //
+        return view('rekening.create', [
+            'judul' => 'Data Rekening Baru',
+            'versi' => 'Simontir v1.0.0 Beta Rev 12',
+            'norek' => Rekening::max('koderekening'),
+            'bidangs' => Bidang::all()
+        ]);
     }
 
     /**
