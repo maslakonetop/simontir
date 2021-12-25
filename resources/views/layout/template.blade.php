@@ -64,7 +64,10 @@
                     <i class="far fa-id-badge"></i> Profil
                 </a>
                 <a href="#" class="dropdown-item">
-                    <i class="fas fa-sign-out-alt"></i> Logout
+                  <form action="/logout" method="POST">
+                    @csrf
+                    <button type="submit" class="btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </form>
                 </a>
             </div>
         </li>
@@ -118,7 +121,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/data" class="nav-link">
                     <i class="fas fa-university"></i>
                     <p>List Rekening</p>
                     </a>

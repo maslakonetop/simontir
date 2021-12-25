@@ -2,6 +2,7 @@
 
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DataController;
 use App\Http\Controllers\PptkController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -23,6 +24,7 @@ Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
-Route::resource('/user', UserController::class);
-Route::resource('/rekening', RekeningController::class);
-Route::resource('/pptk', PptkController::class);
+Route::get('/data', [DataController::class, 'index'])->middleware('auth');
+Route::resource('/user', UserController::class)->middleware('auth');
+Route::resource('/rekening', RekeningController::class)->middleware('auth');
+Route::resource('/pptk', PptkController::class)->middleware('auth');

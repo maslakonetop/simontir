@@ -112,6 +112,7 @@
 			  var options = {
 				title: 'Anggaran Per Rekening',
 				is3D: false,
+        pieHole: 0.4,
 			  };
 	 
 			  var chart = new google.visualization.PieChart(document.getElementById('anggaran'));
@@ -140,7 +141,7 @@
 				is3D: false,
 			  };
 	 
-			  var chart = new google.visualization.BarChart(document.getElementById('rekening'));
+			  var chart = new google.visualization.LineChart(document.getElementById('rekening'));
 	 
 			  chart.draw(data, options);
 			}
