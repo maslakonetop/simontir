@@ -50,7 +50,7 @@
 
             <div class="mb-3">
               <input type="text" class="form-control" id="Username" name="username" aria-describedby="emailHelp"
-                placeholder="Nama Pengguna">
+                placeholder="Nama Pengguna" autofocus>
             </div>
             <div class="mb-3">
               <input type="password" class="form-control" id="password" name="password" placeholder="password">

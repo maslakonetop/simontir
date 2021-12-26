@@ -12,7 +12,8 @@ class DataController extends Controller
         return view('data.index', [
             'versi' => 'Simontir v1.0.0 Beta Rev 12',
             'judul' => 'List Rekening',
-            'data' => Rekening::paginate(7)
+            'data' => Rekening::paginate(10),
+            'cari' => Rekening::all()
         ]);
     }
 }

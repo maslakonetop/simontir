@@ -25,6 +25,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/data', [DataController::class, 'index'])->middleware('auth');
+Route::get('/cari/rekening', [DataController::class, 'cari'])->middleware('auth');
 Route::resource('/user', UserController::class)->middleware('auth');
 Route::resource('/rekening', RekeningController::class)->middleware('auth');
 Route::resource('/pptk', PptkController::class)->middleware('auth');
